@@ -1,0 +1,334 @@
+// Mobile first
+// К pixelperfect не стремился
+
+* {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #2B2B2B;
+  &:hover,
+  &:active {
+    color: #000;
+  }
+}
+
+// Гамбургер для мобилки
+
+.hidden-menu-ticker {
+  display: none;
+}
+
+.btn-menu {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  cursor: pointer;
+  transition: left .23s;
+  z-index: 4;
+  width: 35px;
+  -webkit-transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+}
+.btn-menu span {
+  display: block;
+  height: 5px;
+  background-color: red;
+  margin: 5px 0 0;
+  transition: all .1s linear .1s;
+  position: relative;
+}
+.btn-menu span.first {
+  margin-top: 0;
+}
+
+// Нажатие на гамбургер
+
+.hidden-menu-ticker:checked ~ .header__menu {
+  left: 0;
+}
+.hidden-menu-ticker:checked ~ .btn-menu span.first {
+  -webkit-transform: rotate(45deg);
+  top: 10px;
+}
+.hidden-menu-ticker:checked ~ .btn-menu span.second {
+  opacity: 0;
+}
+.hidden-menu-ticker:checked ~ .btn-menu span.third {
+  -webkit-transform: rotate(-45deg);
+  top: -10px;
+}
+
+// Шапка
+
+.header {
+  width: 100%;
+
+	&__box {
+    position: relative;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	}
+
+	&__logo {
+    right: 10px;
+    top: 10px;
+	}
+
+	&__menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    position: fixed;
+    box-sizing: border-box;
+    width: 70%;
+    background-color: #eee;
+    height: 100%;
+    top: 0;
+    left: -70%;
+    transition: left .2s;
+    z-index: 3;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    box-shadow: 0px 5px 16px rgba(90, 90, 90, 0.25);
+	}
+
+	&__contacts {
+    position: absolute;
+    right: 10px;
+	}
+
+	&__text {
+    margin: 0;
+	}
+
+	&__text--bold {
+    font-weight: bold;
+	}
+}
+
+.menu {
+  padding-left: 18px;
+  margin-top: 20%;
+
+	&__item {
+    margin-bottom: 3%;
+	}
+
+	&__link {
+    font-size: 1.2rem;
+	}
+
+  &__contacts {
+    margin-top: 10%;
+    padding-top: 36px;
+    padding-left: 18px;
+    flex-grow: 1;
+    background: #211F2A;
+    & > p {
+      color: #fff;
+      font-size: 1.2rem;
+    }
+  }
+}
+
+// Верхний блок
+
+.bg_image {
+  width: 100%;
+  object-fit: cover;
+  position: absolute;
+  z-index: -1;
+  filter: brightness(50%);
+}
+
+.tel-form {
+  height: auto;
+  box-sizing: content-box;
+
+  &__input {
+    box-shadow: inset 2px 2px 6px rgba(90, 90, 90, 0.65);
+    min-height: 100%;
+  }
+
+  &__btn {
+    box-sizing: content-box;
+    width: auto;
+    font-size: calc(1rem - 0.8vw);
+  }
+}
+
+// Карусель
+
+.carousel-indicators li {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #CACACA;
+}
+
+.carousel-indicators .active, .hover {
+    background-color: #D51522;
+}
+
+.card-title {
+  font-size: 1rem;
+}
+
+.card_btn {
+    color: #dc3545;
+    border: 1px solid #dc3545;
+    background-color: #fff;
+    border-radius: 0;
+    flex-shrink: 1;
+}
+
+.carousel-indicators {
+  bottom: -50px;
+}
+
+.card-body {
+  background: white;
+  border: 1px solid #D8D8D8;
+  margin-right: 32px;
+  padding: 34px 27px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+// Цветные квадраты карусели
+
+.carousel {
+  max-width: 95vw;
+  position: relative;
+  margin-bottom: 62px;
+  height: 298px;
+  display: flex;
+  align-items: center;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    width: 25%;
+    height: 80%;
+  }
+
+  &::before{
+    top: 14px;
+    left: 0;
+    background: #D51522;
+  }
+
+  &::after{
+    right: 30px;
+    bottom: 14px;
+    background: #6F61A0;
+  }
+}
+
+// Подвал
+
+.footer {
+  min-height: 163px;
+  background-color: #211F2B;
+
+  &__box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__nav {
+    flex-wrap: wrap;
+    padding: 0;
+  }
+}
+
+
+@media (max-width: 920px) and (min-width: 769px){
+  .header__text,
+  .menu__link {
+    font-size: calc(1.25rem - 0.6vw);
+  }
+}
+
+@media (min-width: 769px) {
+
+  .card-body {
+    width: 349px;
+    height: 243px;
+    }
+
+  .header {
+    width: 100%;
+    height: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+
+    &__box {
+      width: 87%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  	}
+
+  	&__logo {
+      position: static;
+  	}
+
+  	&__menu {
+      position: static;
+      background: inherit;
+      box-shadow: none;
+      flex-grow: 1;
+  	}
+
+  	&__contacts {
+      position: static;
+  	}
+
+  }
+
+  .btn-menu {
+    display: none;
+  }
+
+  .menu {
+      margin: 0;
+      padding: 0;
+      position: inherit;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+  	&__item {
+      margin: 0 0.8rem;
+  	}
+
+  	&__contacts--hidden {
+      display: none;
+  	}
+  }
+
+  .footer {
+
+    &__box {
+      position: relative;
+    }
+
+    &__logo {
+      left: 0;
+      position: absolute;
+    }
+
+  }
+}
